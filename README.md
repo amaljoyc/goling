@@ -71,3 +71,47 @@ myMap := map[string]int{
 ```
 
 ### struct
+```
+type person struct {
+	name string
+	age int
+}
+
+p := person{
+	name: "Amal",
+	age: 99,
+}
+```
+
+### function
+```
+func hello() string {
+	return "hello"
+}
+
+func helloWorld() (string, string)  {
+	return "hello", "world"
+}
+```
+
+### function as first class citizen
+- you can pass around function like a variable or another function argument.
+```
+hello, world := helloWorld()
+fmt.Println(hello, world)
+```
+
+### defer a function
+- we can defer the execution or call of a function to the last part...
+```
+func main()  {
+	defer deferMe()
+	fmt.Println("hello")
+}
+
+func deferMe()  {
+	fmt.Println("defer me!")
+}	
+```
+- here, "hello" will be printed first, then "defer me!" will be printed as that method is only executed by the end of main() execution
+
