@@ -50,6 +50,13 @@ func main()  {
 	channelBuffered()
 	closeChannel()
 	channelSelect()
+
+	panicExample()
+
+	office := Office{}
+	office.name = "My Office"
+	office.city = "London"
+	fmt.Println(office)
 }
 
 type person struct {
@@ -141,4 +148,25 @@ func channelSelect() {
 			return
 		}
 	}
+}
+
+func panicExample()  {
+	defer recoverExample()
+	fmt.Println("Starting..")
+	panic("Panicking..")
+}
+
+func recoverExample() {
+	panicValue := recover()
+	fmt.Println(panicValue)
+	fmt.Println("Recovering..")
+}
+
+type Address struct {
+	 city string
+}
+
+type Office struct {
+	name string
+	Address
 }

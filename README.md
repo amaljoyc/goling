@@ -263,3 +263,43 @@ func channelSelect() {
 	}
 }
 ```
+
+### error handling
+- there is no default exception or error handling support in go
+- rather it is advised to handle errors as return values (or additional return values) from a function.
+
+### panic and recover
+- it is not intended to use panic as a form of error/exception mechanism
+- rather use `panic` to only indicate "impossible" situations
+- `recover()` returns the value which is passed by the panic function
+```go
+func panicExample()  {
+	defer recoverExample()
+	fmt.Println("Starting..")
+	panic("Panicking..")
+}
+
+func recoverExample() {
+	panicValue := recover()
+	fmt.Println(panicValue)
+	fmt.Println("Recovering..")
+}
+```
+
+### no inheritence, but we have composition support
+- we can inherit types not using inheritence but rather with composition
+```go
+type Address struct {
+	 city string
+}
+
+type Office struct {
+	name string
+	Address
+}
+
+office := Office{}
+office.name = "My Office"
+office.city = "London"
+fmt.Println(office)
+```
